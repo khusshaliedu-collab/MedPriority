@@ -1,0 +1,198 @@
+{
+  "project_identity": {
+    "name": "MediPriority AI",
+    "tagline": "OPD Triage Assistant for Government Hospitals",
+    "app_type": "dashboard",
+    "category": "clinical_saas_hospital_command_center",
+    "target_users": ["Triage Nurse", "Attending Doctor", "Hospital OPD Administrator"],
+    "core_mission": "Enable triage nurses to assess emergency & OPD patients in under 60 seconds, identify Level 1-5 urgency, recommend optimal departments, trigger red-flag safety rules, and minimize avoidable ED mortality."
+  },
+  "color_system": {
+    "archetype": "SWISS_CLINICAL_PRECISION",
+    "theme_preference": "light_first_with_dark_sidebar",
+    "palette": {
+      "background_primary": "#F8FAFC",
+      "background_secondary": "#FFFFFF",
+      "surface_card": "#FFFFFF",
+      "surface_sidebar": "#0F172A",
+      "surface_sidebar_hover": "#1E293B",
+      "text_primary": "#0F172A",
+      "text_secondary": "#475569",
+      "text_muted": "#94A3B8",
+      "border_light": "#E2E8F0",
+      "border_hover": "#CBD5E1",
+      "brand_primary": "#0D9488",
+      "brand_primary_hover": "#0F766E",
+      "brand_primary_light": "#CCFBF1",
+      "brand_navy": "#0F172A",
+      "brand_navy_accent": "#1E3A8A"
+    },
+    "triage_urgency_levels": {
+      "level_1_resuscitation": {
+        "level": 1,
+        "name": "Resuscitation (Immediate)",
+        "badge_bg": "bg-red-600",
+        "badge_text": "text-white",
+        "card_border": "border-red-600",
+        "card_bg": "bg-red-50",
+        "ring_color": "ring-red-500",
+        "hex": "#DC2626",
+        "target_wait_time": "0 mins (Immediate)"
+      },
+      "level_2_emergent": {
+        "level": 2,
+        "name": "Emergent (Very Urgent)",
+        "badge_bg": "bg-orange-600",
+        "badge_text": "text-white",
+        "card_border": "border-orange-500",
+        "card_bg": "bg-orange-50",
+        "ring_color": "ring-orange-500",
+        "hex": "#EA580C",
+        "target_wait_time": "< 15 mins"
+      },
+      "level_3_urgent": {
+        "level": 3,
+        "name": "Urgent",
+        "badge_bg": "bg-amber-500",
+        "badge_text": "text-slate-950 font-bold",
+        "card_border": "border-amber-400",
+        "card_bg": "bg-amber-50",
+        "ring_color": "ring-amber-400",
+        "hex": "#F59E0B",
+        "target_wait_time": "< 30 mins"
+      },
+      "level_4_less_urgent": {
+        "level": 4,
+        "name": "Less Urgent",
+        "badge_bg": "bg-teal-600",
+        "badge_text": "text-white",
+        "card_border": "border-teal-300",
+        "card_bg": "bg-teal-50",
+        "ring_color": "ring-teal-400",
+        "hex": "#0D9488",
+        "target_wait_time": "< 60 mins"
+      },
+      "level_5_non_urgent": {
+        "level": 5,
+        "name": "Non-Urgent",
+        "badge_bg": "bg-emerald-600",
+        "badge_text": "text-white",
+        "card_border": "border-emerald-300",
+        "card_bg": "bg-emerald-50",
+        "ring_color": "ring-emerald-400",
+        "hex": "#16A34A",
+        "target_wait_time": "< 120 mins"
+      }
+    },
+    "vitals_status_colors": {
+      "critical_high": "#EF4444",
+      "warning_high": "#F59E0B",
+      "normal": "#10B981",
+      "warning_low": "#3B82F6",
+      "critical_low": "#6366F1"
+    }
+  },
+  "typography": {
+    "font_family_heading": "Cabinet Grotesk, Plus Jakarta Sans, sans-serif",
+    "font_family_body": "Inter, system-ui, sans-serif",
+    "font_family_mono": "JetBrains Mono, Source Code Pro, monospace",
+    "hierarchy": {
+      "h1_command_title": "text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900",
+      "h2_section_title": "text-xl sm:text-2xl font-bold tracking-tight text-slate-900",
+      "h3_card_header": "text-base sm:text-lg font-semibold text-slate-800",
+      "vitals_numeric_display": "font-mono text-2xl font-bold tracking-tight",
+      "body_regular": "text-sm text-slate-700 leading-normal",
+      "body_muted": "text-xs text-slate-500",
+      "table_header": "text-xs font-semibold uppercase tracking-wider text-slate-500 bg-slate-100",
+      "badge_label": "text-xs font-bold uppercase tracking-wide"
+    }
+  },
+  "spacing_and_layout": {
+    "dashboard_mode": "HIGH_DENSITY_COMMAND_CENTER",
+    "grid_gap": "gap-4 md:gap-6",
+    "container_padding": "p-4 md:p-6 lg:p-8",
+    "sidebar_width": "w-64 flex-shrink-0",
+    "header_height": "h-16",
+    "card_padding": "p-5",
+    "bento_grid_ratios": {
+      "kpi_summary_cards": "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4",
+      "intake_form_split": "grid-cols-1 lg:grid-cols-12 gap-6 (Intake form: col-span-7, Live AI Assist & Safety Panel: col-span-5)",
+      "results_screen": "grid-cols-1 lg:grid-cols-12 gap-6 (Triage Hero Banner: col-span-12, Vitals Breakdown: col-span-4, Red Flags & Clinical Rules: col-span-4, Recommended Dept & Transfer: col-span-4)",
+      "analytics_dashboard": "grid-cols-1 lg:grid-cols-12 gap-6 (Confusion Matrix: col-span-6, Wait-Time Sim: col-span-6, Recall/Precision KPIs: col-span-12)"
+    }
+  },
+  "key_features_and_views": [
+    {
+      "id": "command_dashboard",
+      "title": "Hospital Command Dashboard",
+      "components": ["KPI Summary Cards", "Live Patient Queue Table", "Priority Filter Bar", "Emergency Escalation Banner", "Quick Intake Button"],
+      "metrics": ["Total OPD Queue", "Level 1 Critical Count", "Average Rapid Triage Time (<60s target)", "ED Bottleneck Warning Index"]
+    },
+    {
+      "id": "rapid_intake_form",
+      "title": "60-Second Patient Triage Intake",
+      "components": ["Patient Demographics", "Vitals Input with Auto-Range Alerts (BP, HR, SpO2, Temp, RR, GCS)", "Chief Symptoms Multi-Select & Severity Scale", "Medical History & High-Risk Flags", "Real-Time AI Preview & Safety Rule Trigger"],
+      "shortcut_actions": ["Quick Load Demo Profiles (e.g. STEMI Chest Pain, Pediatric High Fever, Minor Fracture)"]
+    },
+    {
+      "id": "triage_result_view",
+      "title": "AI Triage Recommendation & Explanation",
+      "components": ["Triage Level 1-5 Hero Banner (High Contrast Color & Big Level Badge)", "Department Allocation (e.g., Cardiology, Resuscitation Bay, General Medicine)", "AI Confidence & XAI Rationale Breakdown", "Safety Rule Override & Nurse Abstention Control", "Printable/Exportable Triage Slip Generator"]
+    },
+    {
+      "id": "waiting_time_simulator",
+      "title": "FCFS vs AI Priority Queue Simulator",
+      "components": ["Interactive Simulation Speed Control", "Wait-Time Comparison Bar Charts", "High-Risk Patient Deterioration Prevention Counter", "Department Queue Load Distribution"]
+    },
+    {
+      "id": "model_evaluation_analytics",
+      "title": "Model Performance & Clinical Safety Dashboard",
+      "components": ["5x5 Confusion Matrix (Predicted vs Actual Triage Level)", "Emergency Recall Metric Indicator (Target > 99% for Level 1)", "Asymmetric Loss Matrix Visualizer", "Under-Triage vs Over-Triage Rate Breakdown"]
+    },
+    {
+      "id": "patient_records",
+      "title": "Historical Triage & Patient Search",
+      "components": ["Search by Patient ID / Name / Mobile", "Triage Audit Trail Log", "Filter by Date / Severity Level / Attending Nurse"]
+    }
+  ],
+  "components_and_design_system": {
+    "code_type": "JavaScript (.js / .jsx)",
+    "shadcn_components_used": [
+      "Card", "Table", "Dialog", "Select", "Badge", "Tooltip", "Tabs", "Sonner (Toast)", "Progress", "Button", "Input", "Switch", "Accordion", "Avatar"
+    ],
+    "surface_styles": {
+      "command_card": "bg-white border border-slate-200 shadow-sm rounded-lg p-5 hover:border-slate-300 transition-colors",
+      "alert_card_critical": "bg-red-50 border-2 border-red-500 rounded-lg p-4 text-red-950",
+      "sticky_nav": "sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 px-6 py-3 flex items-center justify-between",
+      "sidebar_nav": "bg-slate-900 text-slate-100 flex flex-col justify-between p-4 border-r border-slate-800"
+    }
+  },
+  "media_assets": {
+    "image_urls": {
+      "doctor_avatar_1": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHwxfHxkb2N0b3J8ZW58MHx8fHwxNzkyMDAzMjcwfDA&ixlib=rb-4.1.0&q=85",
+      "nurse_avatar_1": "https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwxfHxob3NwaXRhbCUyMG51cnNlfGVufDB8fHx8MTc5MjAwMzI3MHww&ixlib=rb-4.1.0&q=85",
+      "hospital_lobby": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHxob3NwaXRhbCUyMGJ1aWxkaW5nfGVufDB8fHx8MTc5MjAwMzI3MHww&ixlib=rb-4.1.0&q=85",
+      "doctor_consulting": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHw0fHxkb2N0b3J8ZW58MHx8fHwxNzkyMDAzMjcwfDA&ixlib=rb-4.1.0&q=85"
+    }
+  },
+  "test_id_conventions": {
+    "mandatory_rule": "ALL interactive and key informational elements MUST include a data-testid attribute in kebab-case format.",
+    "examples": {
+      "search_input": "data-testid=\"patient-search-input\"",
+      "intake_submit_btn": "data-testid=\"rapid-intake-submit-button\"",
+      "triage_level_badge": "data-testid=\"triage-level-badge\"",
+      "override_triage_btn": "data-testid=\"override-triage-button\"",
+      "confusion_matrix_cell": "data-testid=\"confusion-matrix-cell-1-1\"",
+      "sidebar_nav_item": "data-testid=\"nav-item-dashboard\"",
+      "patient_queue_row": "data-testid=\"patient-queue-row-P1029\""
+    }
+  },
+  "instructions_to_main_agent": [
+    "Build a full-stack MediPriority AI application using Python FastAPI backend for AI triage scoring, rule engine, and queue simulation, with React frontend.",
+    "Follow the clean hospital command center layout with a dark navy sidebar (#0F172A), crisp top header with staff profile & active shift stats, and clean white background (#F8FAFC) for primary workspace.",
+    "Ensure triage Level 1 to 5 badges are highly visible and follow clinical color coding (Red, Orange, Amber, Teal, Green). Never rely solely on color—always display clear text labels like 'Level 1: Resuscitation (Immediate)'.",
+    "Integrate interactive sample profiles for rapid testing in the intake form (e.g., Severe Acute Chest Pain, High Fever Child, Chronic Knee Pain) so users can experience 60-second triage in one click.",
+    "Implement the full Analytics Dashboard with 5x5 Confusion Matrix, Emergency Recall Score (e.g. 99.4%), Asymmetric Loss metric, and Wait-Time Simulation comparing FCFS vs AI Priority Queue.",
+    "Use data-testid attributes on all buttons, forms, badges, table cells, tabs, and key metrics as outlined in test_id_conventions."
+  ]
+}
